@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createWorker } from 'tesseract.js';
+import "./App.css";
 
 function App() {
   const [image, setImage] = useState(null);
@@ -31,21 +32,37 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <form onSubmit={(e) => doOCR(e)}>
-        <input type="file" multiple onChange={(e) => readImage(e)} />
-        <button type="submit">Recognize</button>
-      </form>
+    <div>
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+        <form onSubmit={(e) => doOCR(e)}>
+          <input name="file" id="file" type="file" multiple onChange={(e) => readImage(e)} class="inputfile" />
+          {
+            image !== null ? <button className="recognize" type="submit">Recognize</button>
+            :
+            <label for="file">Browse</label>
+          }
+        </form>
+      </div>
 
-      {
-        image && <img style={{ height: 200, width: "auto" }} src={Buffer.from(image)} alt="uploaded-image" />
-      }
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+        {
+          image ?
+            (
+              <img style={{ height: 200, width: "auto", borderRadius: 20 }} src={Buffer.from(image)} alt="uploaded-image" />
+            )
+            :
+            (<p>No photo available.</p>)
 
-      {
-        ocr && (
-          <p style={{ fontSize: 40 }}>{ocr}</p>
-        )
-      }
+        }
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 20, paddingLeft: 35, paddingRight: 35 }}>
+        {
+          ocr && (
+            <p style={{ fontSize: 25, textAlign: "center" }}>{ocr}</p>
+          )
+        }
+      </div>
     </div>
   );
 }

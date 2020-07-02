@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+  z-index: -1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.inputfile + label {
+  margin: 5px;
+  font-size: 1em;
+  font-weight: 700;
   color: white;
+  background-color: black;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer; /* "hand" cursor */
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: red;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputfile + label * {
+	pointer-events: none;
+}
+
+.recognize {
+  font-size: 1em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin: 5px;
+}
+
+.recognize:hover {
+  background-color: red;
+}
+
+.recognize:focus {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
 }
